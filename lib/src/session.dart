@@ -250,7 +250,7 @@ class KafkaSession {
     if (!_sockets.containsKey(key)) {
       _sockets[key] = Socket.connect(host, port);
       _sockets[key].then((socket) {
-        socket.setOption(SocketOption.TCP_NODELAY, true);
+        socket.setOption(SocketOption.tcpNoDelay, true);
         _buffers[key] = new List();
         _sizes[key] = -1;
         _subscriptions[key] = socket.listen((d) => _handleData(key, d));

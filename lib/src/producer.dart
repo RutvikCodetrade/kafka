@@ -61,7 +61,7 @@ class Producer {
         await session.getMetadata(topicNames, invalidateCache: refreshMetadata);
 
     var byBroker = new ListMultimap<Broker, ProduceEnvelope>.fromIterable(
-        messages, key: (ProduceEnvelope _) {
+        messages, key: (dynamic _) {
       var leaderId =
           meta.getTopicMetadata(_.topicName).getPartition(_.partitionId).leader;
       return meta.getBroker(leaderId);
